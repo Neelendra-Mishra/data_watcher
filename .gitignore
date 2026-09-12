@@ -1,0 +1,38 @@
+# Python virtual environments
+EDA_Project_Venv/
+venv/
+.venv/
+env/
+ENV/
+
+# Node & Frontend dependencies and builds
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+node_modules/
+dist/
+
+# Python caches and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs and environment variables
+*.log
+.env
+.env.*
+!.env.example
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
