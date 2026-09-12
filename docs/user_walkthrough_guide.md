@@ -226,7 +226,7 @@ Let's examine the major incidents caught in `car_sales.csv`:
 * However, only **5 Hyundai Electric cars closed that day**.
 
 #### 2. What To Do Next (Operational Action):
-1. **Launch a 24-Hour CRM Blitz (High Priority!):** 31 test drives resulted in 5 sales, meaning **26 qualified buyers** are sitting warm in your CRM database! Send an automated text/email campaign within 24 hours:
+1. **Launch a 24-Hour CRM Blitz (High Priority!):** 31 test drives resulted in 5 sales, meaning **26 qualified buyers** are sitting warm in your CRM database! Launch a targeted customer follow-up outreach within 24 hours:
    > *"Thank you for test-driving the Hyundai Electric at Apex Motors on Friday! Complete your order before August 31st and receive complimentary home charger installation."*
 2. **Debrief the Sales Team:** Why did 26 prospective buyers walk out without purchasing? Was it trade-in valuation, lease pricing, or range anxiety?
 3. **Capitalize on the Pipeline:** These 26 warm leads are the exact pipeline that powered the dealership's strong month-end close on **August 30th ($177,960)**!

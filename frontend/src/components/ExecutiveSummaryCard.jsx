@@ -4,7 +4,7 @@ import { ShieldAlert, ShieldCheck } from 'lucide-react';
 export default function ExecutiveSummaryCard({ analysisPayload }) {
   if (!analysisPayload) return null;
 
-  const { analysis, summary, email } = analysisPayload;
+  const { analysis, summary } = analysisPayload;
   const totalAnomalies = analysis.total_anomalies;
   const isCritical = totalAnomalies > 0;
 

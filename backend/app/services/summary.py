@@ -1,5 +1,4 @@
-import pandas as pd
-from typing import Dict, Any, List
+from typing import Dict, Any
 
 
 def generate_metric_narrative(metric_data: Dict[str, Any]) -> str:
@@ -23,7 +22,6 @@ def generate_metric_narrative(metric_data: Dict[str, Any]) -> str:
     a_date = most_severe["date"]
     a_val = most_severe["value"]
     a_delta = most_severe["delta_pct"]
-    a_z = most_severe["z_score"]
     a_type = most_severe["type"]
 
     if a_type == "SPIKE_HIGH":
@@ -41,8 +39,8 @@ def generate_metric_narrative(metric_data: Dict[str, Any]) -> str:
 
 def generate_executive_summary(analysis_results: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Generates an executive summary payload combining overall findings,
-    individual metric narratives, and structured email alert content.
+    Generates an executive summary payload combining overall findings
+    and individual metric narratives.
     """
     total_anomalies = analysis_results.get("total_anomalies", 0)
     file_info = analysis_results.get("file_info", {})
@@ -79,28 +77,8 @@ def generate_executive_summary(analysis_results: Dict[str, Any]) -> Dict[str, An
         )
         alert_required = True
 
-    # Build plain-text email preview
-    email_subject = f"Autonomous Data Watcher Alert - {len(flagged_metrics)} Metric Breach(es) Detected"
-    email_body_lines = [
-        f"AUTONOMOUS DATA WATCHER - ANOMALY REPORT",
-        f"Source File: {filename}",
-        f"Date Range: {date_range}",
-        f"Status: {total_anomalies} Anomaly Flag(s) Detected",
-        "=" * 50,
-        ""
-    ]
-    for mn in metric_narratives:
-        if mn["has_anomaly"]:
-            email_body_lines.append(f"• {mn['metric_name'].upper()}:")
-            email_body_lines.append(f"  {mn['narrative']}")
-            email_body_lines.append("")
-
-    email_body_lines.append("Please log into the Autonomous Data Watcher dashboard to view interactive charts and full historical trends.")
-
     return {
         "overall_summary": overall_narrative,
         "alert_required": alert_required,
-        "metric_summaries": metric_narratives,
-        "email_subject": email_subject,
-        "email_body": "\n".join(email_body_lines)
+        "metric_summaries": metric_narratives
     }

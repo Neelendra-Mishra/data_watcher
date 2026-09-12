@@ -4,7 +4,7 @@ from app.api.endpoints import router as api_router
 
 app = FastAPI(
     title="Autonomous Data Watcher API",
-    description="Backend API for automated time-series anomaly detection, plain-English summary generation, and email alerts.",
+    description="Backend API for automated time-series anomaly detection and plain-English summary generation.",
     version="1.0.0"
 )
 

@@ -35,14 +35,6 @@ def test_narrative_generator():
     for ms in summary_payload["metric_summaries"]:
         print(f"\nMetric: {ms['metric_name'].upper()} (Anomaly Flag: {ms['has_anomaly']})")
         print(f"Narrative: {ms['narrative']}")
-
-    print("\n" + "="*50)
-    print("[GENERATED EMAIL PREVIEW]")
-    print("="*50)
-    print(f"SUBJECT: {summary_payload['email_subject']}\n")
-    print(summary_payload["email_body"])
-    print("="*50)
-
     print("\n--- SUMMARY TEST COMPLETED SUCCESSFULLY ---")
 
 

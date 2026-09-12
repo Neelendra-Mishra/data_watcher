@@ -30,7 +30,7 @@ The Autonomous Data Watcher is an end-to-end analytical intelligence application
 
 1. **High-Performance FastAPI Backend:** An asynchronous REST API built with FastAPI, Pandas, and NumPy for streaming in-memory spreadsheet parsing, chronological date sanitization, dynamic rolling Z-score computation, and executive summary narrative assembly.
 2. **Statistical Anomaly Engine:** A statistical calculation layer that handles cold-start expanding windows, division-by-zero variances, period-over-period percentage shifts, and user-tuned sensitivity thresholds ($Z \in [1.0, 4.0]$).
-3. **Executive Briefing Generator:** A deterministic natural language synthesis engine that builds high-level executive summaries, per-metric diagnostics, and structured email notification alerts.
+3. **Executive Briefing Generator:** A deterministic natural language synthesis engine that builds high-level executive summaries and per-metric diagnostic narratives.
 4. **Modern React 19 Frontend:** Built on Vite and Tailwind CSS, featuring an earthy Mediterranean Calm aesthetic (warm cream `#F7F4EF`, deep olive `#667035`, terracotta `#C2856A`, and sage garden `#9BA084`), smart date-column heuristics, interactive sensitivity sliders, Recharts time-series visualizations, and an in-depth "How It Works" educational console.
 
 ```
@@ -69,7 +69,7 @@ The Autonomous Data Watcher is an end-to-end analytical intelligence application
 +-----------------------------------------------------------------------------------+
 |                  STEP 4: EXECUTIVE SUMMARY & NARRATIVE GENERATOR                  |
 |   - Synthesizes findings into plain-English management briefings                  |
-|   - Formulates automated email notification alert subject and formatted body      |
+|   - Formulates overall executive health and individual metric diagnostics         |
 +----------------------------------------+------------------------------------------+
                                          |
                                          v
@@ -93,7 +93,7 @@ Here is a comprehensive breakdown of every file and directory in the project and
 | **`backend/app/main.py`** | **REST API Entrypoint.** Initializes the FastAPI application, configures CORS middleware for frontend communication (`http://localhost:5173`), mounts the `/api` route prefix, and defines the root `/` health check route. |
 | **`backend/app/api/endpoints.py`** | **API Route Handlers.** Defines `/api/upload` (for spreadsheet header discovery and preview) and `/api/analyze` (for executing the statistical pipeline on uploaded byte streams and returning the unified JSON payload). |
 | **`backend/app/services/analytics.py`** | **Core Statistical Analytics Engine.** Contains `load_dataset` (handles both CSV and Excel via `pd.read_csv` and `pd.read_excel`) and `run_analysis` (validates date formats, enforces chronological sorting, computes rolling statistics, calculates Z-scores, and identifies anomalies). |
-| **`backend/app/services/summary.py`** | **Executive Narrative Generator.** Contains `generate_metric_narrative` and `generate_executive_summary`. Translates numeric Z-scores and percentage changes into boardroom-ready plain-English summaries and compiles formatted email alert text. |
+| **`backend/app/services/summary.py`** | **Executive Narrative Generator.** Contains `generate_metric_narrative` and `generate_executive_summary`. Translates numeric Z-scores and percentage changes into boardroom-ready plain-English executive summaries. |
 | **`backend/requirements.txt`** | **Python Dependency Manifest.** Specifies dependencies including `fastapi`, `uvicorn`, `pandas`, `openpyxl`, `numpy`, `python-multipart`, and `pydantic`. |
 | **`backend/tests/`** | **Automated Backend Test Suites.** Contains `test_analytics.py`, `test_summary.py`, and `test_api.py` for headless verification of the statistical algorithms and REST endpoints. |
 | **`frontend/src/App.jsx`** | **Master React Application Canvas.** Manages top-level application state (`activeTab`, `uploadedData`, `analysisPayload`), coordinates the 3-step user workflow, and renders the auto-hiding navbar and scroll-to-top buttons. |
@@ -196,7 +196,7 @@ FastAPI was selected as the backend framework for four fundamental architectural
   3. Sorts rows chronologically and cleans non-date values.
   4. Computes 7-day rolling averages, rolling standard deviations, percentage changes, and Z-scores.
   5. Flags all observations where $|Z| \ge z\_threshold$.
-  6. Passes results to `generate_executive_summary` to compose plain-English narratives and email alert text.
+  6. Passes results to `generate_executive_summary` to compose plain-English narratives.
 - **Success Response (HTTP 200 JSON):**
   ```json
   {
@@ -256,9 +256,7 @@ FastAPI was selected as the backend framework for four fundamental architectural
           "has_anomaly": true,
           "anomaly_count": 1
         }
-      ],
-      "email_subject": "Autonomous Data Watcher Alert - 3 Metric Breach(es) Detected",
-      "email_body": "AUTONOMOUS DATA WATCHER - ANOMALY REPORT\nSource File: car_sales.csv\n..."
+      ]
     }
   }
   ```
